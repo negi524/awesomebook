@@ -14,3 +14,4 @@ rsv_cnt_tb['rsv_cnt_rank'] = rsv_cnt_tb['rsv_cnt'] \
 
 # 必要のないrsv_cntの列を削除
 rsv_cnt_tb.drop('rsv_cnt', axis=1, inplace=True)
+print(rsv_cnt_tb)
