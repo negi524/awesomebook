@@ -8,8 +8,10 @@ def main():
     reserve_tb['reserve_datetime'] = pd.to_datetime(reserve_tb['reserve_datetime'])
 
     # reserve_datetimeを季節分割する
-    reserve_tb['reserve_season'] = reserve_tb['reserve_datetime'].dt.month.apply(to_season)
+    reserve_season = reserve_tb['reserve_datetime'].dt.month.apply(to_season)
+    reserve_tb['reserve_season'] = pd.Categorical(reserve_season, categories=['spring', 'summer', 'autumn', 'winter'])
     print(reserve_tb[['reserve_datetime', 'reserve_season']])
+    reserve_tb.info()
 
 
 def to_season(target: int) -> str:
